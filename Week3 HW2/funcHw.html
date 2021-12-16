@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max Of Three</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body class="bg-light">
     <div class="d-grid gap-2 col-6 mx-auto text-center">
         <h2>Max Of Three</h2>
         <p>Click the button to demonstrate the prompt box.</p>
-        <button onclick="myFunction">Get User Input Numbers</button>
+        <button onclick='maxOfThree()'>Get User Input Numbers</button>
     <p id="Func1"></p>
     <script>
-let num = Number(prompt('enter a number:'));
+// i commented this line out because we don't use the num variable
+// let num = Number(prompt('enter a number:'));
 let arr = [10,20,700];
 let longest = 0;
 function maxOfThree(){
     for (let i=0;i < arr.length;i++)
     if (arr[i]>longest){
          longest = arr[i]
-    
-    
     }
-
+    alert(longest);
 }
 maxOfThree()
-return longest 
+
+// using return outside of a function causes an error
+// return longest
     </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>
+            JavaScript Class Method
+        </h2>
+        <p>Taxanomy of a Man</p>
+        <p id='Nana'> Border Testing</p>
+        <script>
+            class Primate {
+                constructor(nickname,species) {
+                    this.nickname = nickname,
+                    this.species = species,
+                    this.kingdom = 'Animalia',
+                    this.phylum = 'Chordata',
+                    this.class = 'Mammalia',
+                    this.order = 'Primates'
+                }
+                whoAmI() {
+                   let whoAmIString = (
+                       'I am a ' + this.nickname + '  of species '+  this.species + '  kingdom ' +  this.kingdom  +
+                   ' phylum ' +   this.phylum  + '  class  ' +  this.class + '  and order  ' + this.order )
+                   return whoAmIString
+                }
+            }
+            let Samuel = new Primate(' Human ',' Homo Sapien ')
+            Samuel.whoAmI()
+
+            let Nana = new Primate(' Gorilla ',' Troglodytes gorilla ')
+            document.getElementById('Nana').innerHTML = 
+            Samuel.whoAmI()
+
+        </script>
+    </body>
+</html>
