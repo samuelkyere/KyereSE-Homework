@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dougie Donut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="doug.css">
+
+  </head>
+  <body>
+    <header>
+      <input type="number" id="userInput" value=10 />
+
+      <button id="Brooklyn">Brooklyn</button>
+      <button id="Manhattan">Manhattan</button>
+      <button id="Bronx">Bronx</button>
+      <button id="Queens">Queens</button>
+      <button id="StatenIsland">Staten Island</button>
+    </header>
+    <h3 id="displayDescriptor"></h3>
+    <script>
+    
+      const userInput = document.getElementById("userInput");
+      const brooklynButton = document.getElementById("Brooklyn");
+      const manhattanButton = document.getElementById("Manhattan");
+      const bronxButton = document.getElementById("Bronx");
+      const queensButton = document.getElementById("Queens");
+      const statenIslandButton = document.getElementById("StatenIsland");
+      const displayDescriptor = document.getElementById("displayDescriptor");
+      const displayResolution = document.getElementById("displayResolution");
+      const userInput2 = userInput.value;
+      const url1 = `https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=BROOKLYN`;
+      const url2 = `https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=MANHATTAN`;
+      const url3 = `https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=BRONX`;
+      const url4 = `https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=QUEENS`;
+      const url5  = `https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency=NYPD&borough=STATEN ISLAND`
+      displayPolicyResolution = (resolutuinDescription, elementId) => {
+        let ele = (document.getElementById(
+          elementId
+        ).innerHTML += `<p> ${resolutionDescription} </p> `);
+      };
+      fetchingTheFe = (x) => {
+        fetch(x)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            displayDescriptor.innerHTML = `<ul>`;
+            for (let i = 1; i <= userInput2; i++)
+              displayDescriptor.innerHTML += `<li id = "row${i}" > ${data[i].descriptor} <button onclick="displayPoliceResolution('${data[i].resolution_description}','row${i}')" >   what did the police do? </button></li>`;
+            displayDescriptor.innerHTML += `</ul>`;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+      queensButton.addEventListener("click", () => {
+        fetchingTheFe(url4);
+        console.log(queensButton);
+      });
+      brooklynButton.addEventListener("click", () => {
+        fetchingTheFe(url1);
+      });
+
+      manhattanButton.addEventListener("click", () => {
+        fetchingTheFe(url2);
+      });
+      statenIslandButton.addEventListener("click", () => {
+        fetchingTheFe(url5);
+      });
+      bronxButton.addEventListener("click", () => {
+        fetchingTheFe(url3);
+      });
+    </script>
+  </body>
+</html>
